@@ -1,0 +1,249 @@
+.depart-card {
+    min-width: 210px;
+    width: 210px;
+    border-radius: 20px;
+    border: 1px solid #c8d7e4;
+    background: #f5f9fc;
+    position: relative;
+
+    .depart-card__head {
+        padding: 10px;
+        border-bottom: 1px solid #c8d7e4;
+
+        .title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2067b0;
+        }
+    }
+
+    .depart-card__body {
+        padding: 10px;
+
+        .my-profile {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+
+            .my-profile__image {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+
+            .my-profile__info {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+
+                .name {
+                    color: #000000;
+                    font-size: 11px;
+                    font-weight: 500;
+                }
+
+                .designation {
+                    font-size: 9px;
+                    font-weight: 400;
+                    color: #000;
+                    opacity: .6;
+                }
+            }
+        }
+
+
+        .employees-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            margin-top: 15px;
+
+            .title {
+                color: #d4650b;
+                font-size: 8px;
+                height: 11px;
+            }
+        }
+
+        .employees-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            list-style: none;
+
+            li {
+                a {
+                    display: inline-block;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    position: relative;
+                    top: 0;
+                    transition: .3s;
+    
+                    &:hover {
+                        top: -3px;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    .employee-count {
+        color: #2067b0;
+        display: block;
+        font-size: 9px;
+        text-align: center;
+        text-decoration: underline;
+        margin: 0 auto;
+        font-weight: 500;
+    }
+
+
+    &.level-2 {
+        background-color: #f8efe8;
+        border-color: #e8cebd;
+
+        .depart-card__head {
+            border-color: #e8cebd;
+        }
+    }
+    
+
+    &.level-3 {
+        min-width: 190px;
+        width: 190px;
+        background-color: #f1f5de;
+        border-color: #d5e1a6;
+
+        .depart-card__head {
+            border-color: #d5e1a6;
+        }
+    }
+}
+
+
+
+.company-structure {
+    --vz-border-width: 2px;
+
+    thead {
+        .depart-card {
+            &::before {
+                content: '';
+                position: absolute;
+                left: 49%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 14px;
+                top: 100%;
+                background: #e9ebec;
+            }
+        }
+    }
+
+    td {
+
+        border-bottom: 0;
+        
+        .depart-card {
+            &.level-2 {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 2px;
+                    height: 14px;
+                    bottom: 100%;
+                    background: #e9ebec;
+                }
+            }
+        }
+
+        &:nth-child(1) {
+
+            padding-left: 0;
+            
+            .depart-card {
+                &.level-2 {
+                    &:nth-child(1) {
+                        &::before {
+                            left: -1px;
+                            transform: inherit;
+                        }
+                    }
+                }
+            }
+        }
+        
+        &:last-child {
+            
+            padding-right: 0;
+
+            .depart-card {
+                &.level-2 {
+                    &:nth-child(1) {
+                        &::before {
+                            left: unset;
+                            right: -4px;
+                            transform: inherit;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    .sub-depart {
+        padding: 30px 0 30px 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        position: relative;
+            
+        &::before {
+            position: absolute;
+            content: '';
+            left: 0;
+            top: -14px;
+            width: 2px;
+            height: calc(100% + 14px);
+            background: #e9ebec;
+        }
+
+        .depart-card {
+            &.level-3 {
+                &::before {
+                    position: absolute;
+                    content: '';
+                    height: 2px;
+                    width: 15px;
+                    left: -15px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: #e9ebec;
+                }
+            }
+        }
+    }
+}
